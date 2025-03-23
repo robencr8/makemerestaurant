@@ -141,4 +141,35 @@ section p {
 }
 
 .contact-info a {
-  color: #007
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------ FOOTER ------------------ */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* ------------------ MEDIA ------------------ */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
