@@ -5,62 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Me Restaurant</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        let currentLanguage = 'ar';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelector('body').style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+            translatePage();
+        }
+
+        function translatePage() {
+            const translations = {
+                ar: {
+                    about: "من نحن",
+                    services: "الخدمات",
+                    contact: "تواصل معنا",
+                    whatsapp: "واتساب",
+                    callNow: "اتصل الآن",
+                    downloadPDF: "تحميل PDF",
+                    english: "English",
+                    footer: "© 2025 Make Me Restaurant. جميع الحقوق محفوظة."
+                },
+                en: {
+                    about: "About Us",
+                    services: "Services",
+                    contact: "Contact Us",
+                    whatsapp: "WhatsApp",
+                    callNow: "Call Now",
+                    downloadPDF: "Download PDF",
+                    english: "العربية",
+                    footer: "© 2025 Make Me Restaurant. All rights reserved."
+                }
+            };
+
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[currentLanguage][key];
+            });
+        }
+
+        function whatsapp() {
+            window.open('https://wa.me/971522233989', '_blank');
+        }
+
+        function callNow() {
+            window.open('tel:+971522233989');
+        }
+
+        function downloadPDF() {
+            window.open('assets/menu.pdf', '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            translatePage();
+        });
+    </script>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about" data-translate="about">من نحن</a></li>
+                <li><a href="#services" data-translate="services">الخدمات</a></li>
+                <li><a href="#contact" data-translate="contact">تواصل معنا</a></li>
+                <li><a href="#" onclick="whatsapp()" data-translate="whatsapp">واتساب</a></li>
+                <li><a href="#" onclick="callNow()" data-translate="callNow">اتصل الآن</a></li>
+                <li><a href="#" onclick="downloadPDF()" data-translate="downloadPDF">تحميل PDF</a></li>
+                <li><a href="#" onclick="changeLanguage(currentLanguage === 'ar' ? 'en' : 'ar')" data-translate="english">English</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<nav class="nav">
-    <ul>
-        <li><a href="#section1">الواجهة الرئيسية</a></li>
-        <li><a href="#section2">من نحن</a></li>
-        <li><a href="#section3">خدماتنا</a></li>
-        <li><a href="#section4">باقاتنا</a></li>
-        <li><a href="#section5">أعمالنا السابقة</a></li>
-        <li><a href="#section6">ماذا يقول عملاؤنا</a></li>
-        <li><a href="#section7">تواصل معنا</a></li>
-        <li><a href="#section8">الأسئلة الشائعة</a></li>
-        <li><a href="#section9">الخطة الكاملة</a></li>
-    </ul>
-</nav>
+    <main>
+        <section id="about">
+            <img src="assets/about.png" alt="من نحن" loading="lazy">
+        </section>
 
-<section id="section1" class="section">
-    <img src="assets/1_atlq-mtamk-aw-mtbkhk-bkl-shwlh-wahtrafyh.png" alt="Section 1" loading="lazy">
-</section>
+        <section id="services">
+            <img src="assets/services.png" alt="الخدمات" loading="lazy">
+        </section>
 
-<section id="section2" class="section">
-    <img src="assets/2_mn-nhn.png" alt="Section 2" loading="lazy">
-</section>
+        <section id="contact">
+            <img src="assets/contact.png" alt="تواصل معنا" loading="lazy">
+        </section>
+    </main>
 
-<section id="section3" class="section">
-    <img src="assets/3_khdmatna.png" alt="Section 3" loading="lazy">
-</section>
-
-<section id="section4" class="section">
-    <img src="assets/4_baqatna.png" alt="Section 4" loading="lazy">
-</section>
-
-<section id="section5" class="section">
-    <img src="assets/5_aamalna-alsabqh.png" alt="Section 5" loading="lazy">
-</section>
-
-<section id="section6" class="section">
-    <img src="assets/6_matha-yqwl-amlauna.png" alt="Section 6" loading="lazy">
-</section>
-
-<section id="section7" class="section">
-    <img src="assets/7_twasl-mana.png" alt="Section 7" loading="lazy">
-</section>
-
-<section id="section8" class="section">
-    <img src="assets/8_alaselh-alshaeah.png" alt="Section 8" loading="lazy">
-</section>
-
-<section id="section9" class="section">
-    <img src="assets/9_jahz-llantlaq-ahsl-ala-khth-kamlh-alaan.png" alt="Section 9" loading="lazy">
-</section>
-
-<footer>
-    <p>جميع الحقوق محفوظة لسنه ٢٠٢٥ © Make Me Restaurant 2025</p>
-</footer>
-
+    <footer>
+        <p data-translate="footer">© 2025 Make Me Restaurant. جميع الحقوق محفوظة.</p>
+    </footer>
 </body>
 </html>
