@@ -10,7 +10,8 @@ body {
 header {
     background-color: #ffffff;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    position: sticky;
+    position: fixed; /* تثبيت القائمة في الأعلى */
+    width: 100%;
     top: 0;
     z-index: 1000;
 }
@@ -31,15 +32,27 @@ nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: 600;
-    transition: color 0.3s;
+    padding: 8px 16px;
+    border-radius: 5px;
 }
 
-nav ul li a:hover {
-    color: #ff6600;
+nav ul li a[onclick="whatsapp()"] {
+    background-color: #25D366;
+    color: white;
+}
+
+nav ul li a[onclick="callNow()"] {
+    background-color: #007BFF;
+    color: white;
+}
+
+nav ul li a[onclick="downloadPDF()"] {
+    background-color: #ff6600;
+    color: white;
 }
 
 main {
-    padding: 20px;
+    padding-top: 100px; /* مساحة كافية للقائمة المثبتة */
     display: flex;
     flex-direction: column;
     align-items: center;
